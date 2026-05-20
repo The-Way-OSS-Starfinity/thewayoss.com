@@ -1,13 +1,33 @@
 import { Link } from "wouter";
 import { motion, useReducedMotion } from "framer-motion";
 import { getAllEntries, formatStamp, getPreviewText } from "@/lib/journal";
+import fieldNotesEntries from "@/data/field-notes-entries";
 import { EASE, DURATION } from "@/lib/animations";
 import { HOMEPAGE_JOURNAL_LIMIT } from "@/lib/constants";
 
 export default function Journal() {
-  // Homepage displays the most recent journal entry. Full archive at /journal.
-  // This cap is intentional editorial restraint — do not increase without discussion.
-  const entries = getAllEntries().slice(0, HOMEPAGE_JOURNAL_LIMIT);
+  const journalEntries = getAllEntries().map((e) => ({
+    slug: e.slug,
+    date: e.date,
+    stamp: formatStamp(e),
+    title: e.title,
+    preview: getPreviewText(e),
+    href: `/journal/${e.slug}`,
+  }));
+
+  const fieldNotes = fieldNotesEntries.map((e) => ({
+    slug: e.slug,
+    date: e.date,
+    stamp: `${e.date.replace(/-/g, ".")} · ${e.category.toLowerCase()}`,
+    title: e.title,
+    preview: e.dek,
+    href: `/field-notes/${e.slug}`,
+  }));
+
+  const entries = [...journalEntries, ...fieldNotes]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, HOMEPAGE_JOURNAL_LIMIT);
+
   const shouldReduce = useReducedMotion();
 
   return (
@@ -35,16 +55,16 @@ export default function Journal() {
               viewport={{ amount: 0.1, once: true }}
               className={i !== 0 ? "py-[64px] border-t border-[#D9D2C4]" : "pt-0 pb-0"}
             >
-              <div className="font-mono-meta text-[#5C5750] uppercase">{formatStamp(entry)}</div>
+              <div className="font-mono-meta text-[#5C5750] uppercase">{entry.stamp}</div>
               <h3 className="font-fraunces text-[28px] font-normal text-[#1A1816] mt-[16px] leading-snug">
                 {entry.title}
               </h3>
               <p className="font-sans text-[18px] text-[#5C5750] leading-relaxed mt-[16px]">
-                {getPreviewText(entry)}
+                {entry.preview}
               </p>
               <div className="mt-[24px] flex flex-wrap items-center gap-x-8 gap-y-3">
                 <Link
-                  href={`/journal/${entry.slug}`}
+                  href={entry.href}
                   className="font-sans text-[16px] text-[#B8471C] hover:text-[#9C3A15] hover:underline transition-colors duration-200"
                 >
                   Read the full entry →
