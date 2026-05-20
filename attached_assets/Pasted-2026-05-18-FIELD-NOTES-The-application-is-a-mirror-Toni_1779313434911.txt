@@ -1,0 +1,15 @@
+2026.05.18 · FIELD NOTES
+The application is a mirror
+Tonight we submitted an application to a16z's Speedrun program.
+That sentence is easy to write after the fact. It sounds cleaner than the actual moment felt. The actual moment was a stack of small decisions: how to describe the work without making it smaller than it is, how to tell the truth without hiding behind big words, how to explain a product that begins with Jiu-Jitsu academies and points toward something much larger — infrastructure for communities of practice.
+Applications have a way of forcing compression. They ask for the one-liner, the category, the founder experience, the traction, the plan. They make you choose what the work really is when there is no room left for fog.
+So we chose.
+The Way OSS is not a fitness app. It is not gym software with better branding. It is not another platform trying to pull people deeper into screens. The work is to build AI-native infrastructure that strengthens real-world practice communities — starting with the grappling community, where transformation is already happening every night on the mat, mostly without a system worthy of it.
+Submitting to Speedrun does not mean we have arrived. It means we have made the work legible enough to be evaluated by people who see thousands of ambitious claims. That is useful whether the answer is yes or no. If the application is strong, it reflects clarity. If it is weak, it reveals where the work still needs to become sharper.
+The deeper milestone is not the submission. It is that the thesis held under pressure.
+The deeper milestone is not the submission. It is that the thesis held under pressure.
+When asked who I am, the answer was not a costume. Martial artist. Builder. Transformation entrepreneur. Recovery. Music. AI. Product. Community. All of it belongs to the same through-line: use exponential technology to strengthen human connection, not replace it.
+When asked what we are building, the answer was not a feature list. We are building the operating layer for practice communities — the places where people become more courageous, more honest, more useful, and more connected through repeated embodied work.
+And when asked why now, the answer was simple: because AI is finally powerful enough to adapt to human communities, and most of the world is trying to use it to replace them.
+That is not the path.
+The path is the practice.

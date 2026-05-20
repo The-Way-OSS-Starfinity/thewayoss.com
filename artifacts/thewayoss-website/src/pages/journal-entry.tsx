@@ -3,14 +3,17 @@ import { motion, useReducedMotion } from "framer-motion";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import { getEntryBySlug, getAdjacentEntries, formatStamp, getPreviewText } from "@/lib/journal";
+import { getFieldNotesEntryBySlug } from "@/lib/field-notes";
 import { EASE, DURATION } from "@/lib/animations";
 import { useMeta } from "@/lib/meta";
 import { ShareLink } from "@/components/ShareLink";
 import { JournalCurrents } from "@/components/CrossCurrents";
+import FieldNotesEntryPage from "@/pages/field-notes-entry";
 
 export default function JournalEntryPage() {
   const { slug } = useParams<{ slug: string }>();
   const entry = getEntryBySlug(slug);
+  const fieldNotesEntry = !entry ? getFieldNotesEntryBySlug(slug) : undefined;
   const shouldReduce = useReducedMotion();
 
   useMeta(
@@ -24,6 +27,10 @@ export default function JournalEntryPage() {
         }
       : {}
   );
+
+  if (!entry && fieldNotesEntry) {
+    return <FieldNotesEntryPage />;
+  }
 
   if (!entry) {
     return (
