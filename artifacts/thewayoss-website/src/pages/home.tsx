@@ -267,7 +267,7 @@ export default function Home() {
                   mt: true,
                 },
                 {
-                  img: "https://thewayoss.com/images/voices/voices-cj-jiujitsu-2400.jpg",
+                  img: "/img-2565.jpg",
                   alt: "Three jiu-jitsu practitioners training on a grey mat",
                   quote: "I walked into the gym for the first time on a small decision that turned out to matter more than any of the bigger ones I had been making.",
                   meta: "— Cj · jiu-jitsu practitioner, founder · Bradenton, Florida",
