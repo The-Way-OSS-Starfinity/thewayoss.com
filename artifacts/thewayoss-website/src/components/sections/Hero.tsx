@@ -11,11 +11,11 @@ export default function Hero() {
       <div className="flex-1 md:w-2/3 flex flex-col justify-center px-[20px] md:px-[32px] pt-[120px] md:pt-[80px] max-w-[1280px] mx-auto md:mx-0 w-full z-10">
         <motion.div {...fadeUp} className="max-w-[720px] md:pl-[32px] xl:pl-[128px]">
           <h1 className="text-postulate text-[#1A1816]">
-            For practitioners who are ready to build the room they've been training in.
+            Your academy is more than a place to train.
           </h1>
           
           <p className="font-sans text-[18px] text-[#5C5750] mt-8 md:mt-12 leading-relaxed">
-            The Way OSS is the infrastructure for those becoming the leaders their community is waiting for.
+            The Way OSS helps Jiu-Jitsu gyms become stronger communities — where members connect, grow, return, and belong.
           </p>
 
           <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-[16px]">
