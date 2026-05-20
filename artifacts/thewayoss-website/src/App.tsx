@@ -12,6 +12,7 @@ import DomainEntryPage from "@/pages/domain-entry";
 import VoicesPage from "@/pages/voices";
 import VoiceEntryPage from "@/pages/voice-entry";
 import BeginPage from "@/pages/begin";
+import FieldNotesEntryPage from "@/pages/field-notes-entry";
 import { RouteProgress } from "@/components/RouteProgress";
 import { EASE, PAGE_TRANSITION_DURATION } from "@/lib/animations";
 
@@ -69,6 +70,7 @@ function AnimatedRoutes() {
           <Route path="/domains/:slug" component={DomainEntryPage} />
           <Route path="/voices" component={VoicesPage} />
           <Route path="/voices/:slug" component={VoiceEntryPage} />
+          <Route path="/field-notes/:slug" component={FieldNotesEntryPage} />
           <Route path="/begin" component={BeginPage} />
           <Route component={NotFound} />
         </Switch>
