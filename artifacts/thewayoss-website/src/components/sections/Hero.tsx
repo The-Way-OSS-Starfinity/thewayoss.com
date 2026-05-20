@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-      <div className="w-full md:w-1/3 h-[50vh] md:h-[calc(100vh-80px)] md:absolute md:right-0 md:top-[80px] md:pt-0 md:order-last">
+      <div className="w-full md:w-1/3 h-[50vh] md:h-[calc(100vh-80px)] md:absolute md:right-0 md:top-[80px] md:pt-0 md:order-last border-x border-black">
         {/* Placeholder for bespoke photography */}
         <img 
           src="/hero-image.webp" 
