@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1A1816"/>
+  <rect x="0" y="0" width="6" height="630" fill="#B8471C"/>
+  <text x="80" y="148" font-family="monospace" font-size="13" fill="#5C5750" letter-spacing="3">DECISION NOTES  ·  THE WAY OSS JOURNAL</text>
+  <rect x="80" y="168" width="40" height="1" fill="#B8471C"/>
+  <text x="80" y="258" font-family="Georgia, serif" font-size="68" font-weight="300" fill="#F5F2EC">What we chose</text>
+  <text x="80" y="336" font-family="Georgia, serif" font-size="68" font-weight="300" fill="#F5F2EC">not to build</text>
+  <text x="80" y="440" font-family="Georgia, serif" font-size="24" font-style="italic" fill="#B8471C">"What you refuse to build defines you</text>
+  <text x="80" y="476" font-family="Georgia, serif" font-size="24" font-style="italic" fill="#B8471C">more than what you ship."</text>
+  <text x="80" y="590" font-family="monospace" font-size="12" fill="#5C5750" letter-spacing="2">THEWAYOSS.COM</text>
+</svg>

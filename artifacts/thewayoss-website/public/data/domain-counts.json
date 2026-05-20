@@ -1,0 +1,8 @@
+{
+  "martial-arts": { "practitioners": 0, "venues": 0, "venue_label": "dojos seeded" },
+  "contemplative": { "practitioners": 0, "venues": 0, "venue_label": "sanghas seeded" },
+  "creative": { "practitioners": 0, "venues": 0, "venue_label": "studios seeded" },
+  "entrepreneurial": { "practitioners": 0, "venues": 0, "venue_label": "cohorts seeded" },
+  "healing": { "practitioners": 0, "venues": 0, "venue_label": "practices seeded" },
+  "technical": { "practitioners": 0, "venues": 0, "venue_label": "guilds seeded" }
+}
