@@ -42,4 +42,3 @@ externalPort = 3000
 [userenv]
 
 [userenv.shared]
-"Github Personal Access Token" = "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"
