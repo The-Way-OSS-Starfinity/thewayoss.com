@@ -19,13 +19,15 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-[16px]">
-            <Link 
-              href="/begin"
+            <a 
+              href="https://thewayoss.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#B8471C] text-[#F5F2EC] font-sans font-medium text-[16px] px-[32px] py-[16px] rounded-[2px] hover:bg-[#9C3A15] transition-colors duration-200 text-center"
               data-testid="hero-btn-begin"
             >
               Begin
-            </Link>
+            </a>
             <a 
               href="/#journal"
               className="bg-transparent border border-[#1A1816] text-[#1A1816] font-sans font-medium text-[16px] px-[32px] py-[16px] rounded-[2px] hover:border-[#B8471C] hover:text-[#B8471C] transition-colors duration-200 text-center"

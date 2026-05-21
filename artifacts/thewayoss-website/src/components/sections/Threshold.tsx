@@ -26,13 +26,15 @@ export default function Threshold() {
           viewport={{ amount: 0.2, once: true }}
           className="mt-[48px]"
         >
-          <Link
-            href="/begin"
+          <a
+            href="https://thewayoss.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-[#B8471C] text-[#F5F2EC] font-sans font-medium text-[20px] px-[40px] py-[20px] rounded-[2px] hover:bg-[#9C3A15] transition-colors duration-200"
             data-testid="cta-begin-final"
           >
             Begin
-          </Link>
+          </a>
         </motion.div>
 
         <motion.div

@@ -108,9 +108,9 @@ export default function Nav({ theme = "light" }: NavProps) {
             <Link href="/voices" className={navLinkClass("/voices")} data-testid="link-voices">
               Voices
             </Link>
-            <Link href="/begin" className="font-sans text-[14px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200" data-testid="link-begin">
+            <a href="https://thewayoss.app/" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200" data-testid="link-begin">
               Begin
-            </Link>
+            </a>
           </div>
 
           <button
@@ -160,14 +160,16 @@ export default function Nav({ theme = "light" }: NavProps) {
             <Link href="/voices" className={drawerLinkClass("/voices")} data-testid="mobile-link-voices">
               Voices
             </Link>
-            <Link
-              href="/begin"
+            <a
+              href="https://thewayoss.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-sans text-[22px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200 py-4 px-6 w-full text-left block"
               data-testid="mobile-link-begin"
               onClick={() => setMenuOpen(false)}
             >
               Begin
-            </Link>
+            </a>
           </div>
         </div>
       )}
