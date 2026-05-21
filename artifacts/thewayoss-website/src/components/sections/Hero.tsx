@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useFadeUp } from "@/lib/animations";
 

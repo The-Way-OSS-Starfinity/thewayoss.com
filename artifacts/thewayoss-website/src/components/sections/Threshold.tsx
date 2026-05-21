@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import { motion, useReducedMotion } from "framer-motion";
 import { EASE, DURATION } from "@/lib/animations";
 
