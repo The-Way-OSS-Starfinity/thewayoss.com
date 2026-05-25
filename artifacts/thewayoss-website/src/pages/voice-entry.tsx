@@ -57,6 +57,7 @@ export default function VoiceEntryPage() {
               alt={voice.imageAlt}
               width={voice.imageWidth}
               height={voice.imageHeight}
+              loading="lazy"
               decoding="async"
               style={{
                 width: "100%",
