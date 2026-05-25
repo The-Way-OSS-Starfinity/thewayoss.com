@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { useFadeUp } from "@/lib/animations";
+import heroAvifSrcset from "../../assets/hero-image.webp?w=400;600;800;1200&format=avif&as=srcset";
+import heroWebpSrcset from "../../assets/hero-image.webp?w=400;600;800;1200&format=webp&as=srcset";
+import heroFallback from "../../assets/hero-image.webp?w=800&format=webp&as=url";
 
 
 export default function Hero() {
@@ -44,13 +47,28 @@ export default function Hero() {
         </motion.div>
       </div>
       <div className="w-full md:w-1/3 h-[50vh] md:h-[calc(100vh-80px)] md:absolute md:right-0 md:top-[80px] md:pt-0 md:order-last border-x border-black">
-        {/* Placeholder for bespoke photography */}
-        <img 
-          src="/hero-image.webp" 
-          alt="Practitioners shaking hands on the mat" 
-          className="w-full h-full object-cover"
-          fetchPriority="high"
-        />
+        {/* Bespoke photography — responsive variants served per device */}
+        <picture className="block w-full h-full">
+          <source
+            type="image/avif"
+            srcSet={heroAvifSrcset}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <source
+            type="image/webp"
+            srcSet={heroWebpSrcset}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <img
+            src={heroFallback}
+            alt="Practitioners shaking hands on the mat"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+            width={1200}
+            height={1800}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </picture>
       </div>
     </section>
   );
