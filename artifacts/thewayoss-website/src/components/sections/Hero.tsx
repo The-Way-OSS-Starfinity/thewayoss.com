@@ -69,7 +69,7 @@ export default function Hero() {
             the dev server has processed them (production build pre-bakes
             these at build time, so there is no delay in prod).
       */}
-      <div className="w-full border-x border-black lg:w-1/3 lg:absolute lg:right-0 lg:top-0 lg:h-screen lg:overflow-hidden">
+      <div className="w-full border-x border-black lg:w-1/3 lg:absolute lg:right-0 lg:top-0 lg:h-screen lg:overflow-hidden lg:pt-20">
         <img
           src={heroRaw}
           srcSet={heroWebpSrcset}
