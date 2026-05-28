@@ -11,7 +11,7 @@ export default function Hero() {
     <section className="relative w-full min-h-screen flex flex-col lg:flex-row bg-[#F5F2EC]">
 
       {/* Text column — left 2/3 on desktop */}
-      <div className="flex-1 lg:w-2/3 flex flex-col justify-center px-5 lg:px-8 pt-28 pb-10 lg:py-0 max-w-[1280px] mx-auto lg:mx-0 w-full z-10">
+      <div className="flex-1 lg:w-2/3 flex flex-col justify-center px-5 lg:px-8 pt-28 pb-10 lg:pt-20 lg:pb-0 max-w-[1280px] mx-auto lg:mx-0 w-full z-10">
         <motion.div {...fadeUp} className="max-w-[720px] lg:pl-8 xl:pl-32">
           <h1 className="text-postulate text-[#1A1816]">
             Your academy is more than a place to train.
