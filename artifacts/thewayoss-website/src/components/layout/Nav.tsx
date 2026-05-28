@@ -80,7 +80,7 @@ export default function Nav({ theme = "light" }: NavProps) {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${navBg}`}
       >
-        <div className="max-w-[1280px] mx-auto px-[20px] md:px-[32px] h-[80px] flex items-center justify-between">
+        <div className="w-full px-5 md:px-8 lg:px-10 h-[80px] flex items-center justify-between">
           <Link
             href="/"
             className={`font-sans font-medium text-[16px] ${textColor} cursor-pointer`}

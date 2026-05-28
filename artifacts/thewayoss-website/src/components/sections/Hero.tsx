@@ -69,13 +69,13 @@ export default function Hero() {
             the dev server has processed them (production build pre-bakes
             these at build time, so there is no delay in prod).
       */}
-      <div className="w-full border-x border-black lg:w-1/3 lg:absolute lg:right-0 lg:top-0 lg:h-screen lg:overflow-hidden lg:pt-20">
+      <div className="w-full border-x border-black lg:w-1/3 lg:absolute lg:right-0 lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-hidden lg:bg-[#1A1816]">
         <img
           src={heroRaw}
           srcSet={heroWebpSrcset}
           sizes="(max-width: 1024px) 100vw, 33vw"
           alt="Practitioners training on the mat"
-          className="w-full h-auto lg:h-full lg:object-cover lg:object-top"
+          className="w-full h-auto lg:h-full lg:object-cover lg:object-center"
           fetchPriority="high"
           loading="eager"
           decoding="sync"
