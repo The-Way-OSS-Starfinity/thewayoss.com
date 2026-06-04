@@ -28,7 +28,7 @@ export default function Footer() {
               <Link href="/pillars" className="font-sans text-[14px] text-[#9A948A] hover:text-[#F5F2EC] transition-colors duration-200 py-2 sm:py-0 block" data-testid="footer-link-pillars">Pillars</Link>
               <Link href="/journal" className="font-sans text-[14px] text-[#9A948A] hover:text-[#F5F2EC] transition-colors duration-200 py-2 sm:py-0 block" data-testid="footer-link-journal">Journal</Link>
               <Link href="/voices" className="font-sans text-[14px] text-[#9A948A] hover:text-[#F5F2EC] transition-colors duration-200 py-2 sm:py-0 block" data-testid="footer-link-voices">Voices</Link>
-              <a href="https://thewayoss.app/" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] text-[#9A948A] hover:text-[#F5F2EC] transition-colors duration-200 py-2 sm:py-0 block" data-testid="footer-link-begin">Begin</a>
+              <a href="https://staging.thewayoss.app/" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] text-[#9A948A] hover:text-[#F5F2EC] transition-colors duration-200 py-2 sm:py-0 block" data-testid="footer-link-begin">Begin</a>
             </div>
           </div>
 
