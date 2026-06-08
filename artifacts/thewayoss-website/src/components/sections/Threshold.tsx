@@ -26,7 +26,7 @@ export default function Threshold() {
           className="mt-[48px]"
         >
           <a
-            href="https://staging.thewayoss.app/"
+            href="https://thewayoss.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-[#B8471C] text-[#F5F2EC] font-sans font-medium text-[20px] px-[40px] py-[20px] rounded-[2px] hover:bg-[#9C3A15] transition-colors duration-200"

@@ -108,7 +108,7 @@ export default function Nav({ theme = "light" }: NavProps) {
             <Link href="/voices" className={navLinkClass("/voices")} data-testid="link-voices">
               Voices
             </Link>
-            <a href="https://staging.thewayoss.app/" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200" data-testid="link-begin">
+            <a href="https://thewayoss.app/" target="_blank" rel="noopener noreferrer" className="font-sans text-[14px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200" data-testid="link-begin">
               Begin
             </a>
           </div>
@@ -161,7 +161,7 @@ export default function Nav({ theme = "light" }: NavProps) {
               Voices
             </Link>
             <a
-              href="https://staging.thewayoss.app/"
+              href="https://thewayoss.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-sans text-[22px] font-medium text-[#B8471C] hover:text-[#9C3A15] transition-colors duration-200 py-4 px-6 w-full text-left block"

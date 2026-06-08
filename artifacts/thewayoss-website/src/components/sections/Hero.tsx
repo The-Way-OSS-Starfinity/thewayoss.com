@@ -23,7 +23,7 @@ export default function Hero() {
 
           <div className="mt-8 lg:mt-12 flex flex-col sm:flex-row gap-4">
             <a
-              href="https://staging.thewayoss.app/"
+              href="https://thewayoss.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#B8471C] text-[#F5F2EC] font-sans font-medium text-[16px] px-8 py-4 rounded-[2px] hover:bg-[#9C3A15] transition-colors duration-200 text-center"
