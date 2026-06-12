@@ -27,8 +27,8 @@ function renderBlock(para: string, i: number, quotePosition: number, quote: stri
 
   if (isHeading) {
     return (
-      <div key={i}>
-        <h2 className="font-fraunces text-[22px] font-normal text-[#1A1816] mt-[56px] mb-0 leading-snug uppercase tracking-wide">
+      <div key={i} className="mt-[56px]">
+        <h2 className="font-fraunces text-[22px] font-normal text-[#1A1816] leading-snug uppercase tracking-wide">
           {para.slice(3)}
         </h2>
       </div>
@@ -36,8 +36,8 @@ function renderBlock(para: string, i: number, quotePosition: number, quote: stri
   }
 
   return (
-    <div key={i}>
-      <p className="font-sans text-[19px] text-[#1A1816] leading-[1.7] mt-[32px] first:mt-0">
+    <div key={i} className={i === 0 ? "" : "mt-[32px]"}>
+      <p className="font-sans text-[19px] text-[#1A1816] leading-[1.7]">
         {renderInlineBold(para)}
       </p>
       {i === quotePosition - 1 && (
