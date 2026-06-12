@@ -14,7 +14,7 @@ export function RouteProgress() {
   const [location] = useLocation();
   const shouldReduce = useReducedMotion();
 
-  if (shouldReduce) return null;
+  if (typeof window === "undefined" || shouldReduce) return null;
 
   return (
     <div
