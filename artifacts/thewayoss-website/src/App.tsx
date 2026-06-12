@@ -79,9 +79,10 @@ function AnimatedRoutes() {
   );
 }
 
-function App() {
+function App({ ssrPath }: { ssrPath?: string } = {}) {
+  const base = (import.meta.env?.BASE_URL ?? "/").replace(/\/$/, "");
   return (
-    <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+    <WouterRouter base={base} {...(ssrPath !== undefined ? { ssrPath } : {})}>
       <ScrollToTop />
       <RouteProgress />
       <AnimatedRoutes />

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts",
+    "build:client": "vite build --config vite.config.ts",
+    "build:server": "vite build --config vite.prerender.config.ts",
+    "build": "pnpm build:client && pnpm build:server && node dist/server/prerender.js",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
