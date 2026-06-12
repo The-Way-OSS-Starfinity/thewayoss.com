@@ -32,7 +32,5 @@ export function formatStamp(entry: JournalEntry): string {
 }
 
 export function getPreviewText(entry: JournalEntry): string {
-  const firstParagraph = entry.body.split("\n\n")[0];
-  const sentences = firstParagraph.match(/[^.!?]+[.!?]+/g) ?? [firstParagraph];
-  return sentences.slice(0, 2).join(" ").trim();
+  return entry.body.split("\n\n")[0].trim();
 }
