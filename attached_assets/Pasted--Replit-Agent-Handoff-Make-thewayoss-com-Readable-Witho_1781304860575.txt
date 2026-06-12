@@ -1,0 +1,64 @@
+# Replit Agent Handoff — Make thewayoss.com Readable Without JavaScript
+
+## Context
+
+thewayoss.com currently ships as a client-rendered SPA. Fetchers that don’t execute JavaScript — AI agents, many search crawlers, social scrapers — receive only the `<head>` meta tags and an empty root div. All page content is invisible to them.
+
+## Goal
+
+Every public route must return its complete, human-readable content in the initial HTML response, verifiable with `curl`, with zero JavaScript execution required. Client-side interactivity may hydrate on top, but content must never depend on it.
+
+## Working rules
+
+- Phase 0 is diagnostic only. Report findings and your recommended approach, then **stop and wait for approval** before modifying anything.
+- No visual changes. No copy changes. No URL changes.
+- Single-purpose commits with clear messages.
+- If you hit a decision not covered here, stop and ask rather than guessing.
+
+## Phase 0 — Diagnose (no changes)
+
+Report the following:
+
+1. Framework and build tool (Vite + React SPA? Next.js? Other?), the router in use, and the Replit deployment type (static vs. server).
+1. The full list of public routes (marketing pages and every field note).
+1. Where page content lives: hardcoded JSX, markdown files, database, or API.
+1. Output of `curl -s <deployed-url> | head -80` for the homepage, confirming the empty-shell problem.
+1. Your recommended Phase 1 path with rationale, including estimated blast radius.
+
+If field note content is hardcoded in JSX, include a proposal to move entries to markdown/MDX files in the repo (diffable, portable, statically renderable) — flagged as optional scope for approval.
+
+## Phase 1 — Server-readable HTML (path depends on Phase 0 findings)
+
+**If the site is already on Next.js or another meta-framework:** ensure every public route uses static generation (SSG). No route may rely on client-only data fetching for its primary content.
+
+**If the site is a Vite/CRA SPA — Option A (default): build-time prerendering.**
+Add a post-build step that renders every route to static HTML — either a prerender plugin for the build tool, or a small Playwright/Puppeteer script that serves the built app locally, visits each route from an enumerated route list, and writes `dist/<route>/index.html`. Requirements:
+
+- The route list must be generated from the content source, so new field notes prerender automatically without manual list edits.
+- Hydration must work: the prerendered HTML and the client bundle render identical markup (no hydration mismatch warnings).
+- The prerender step runs in the deploy pipeline, not as a manual task.
+
+**Option B (requires explicit approval before starting): migrate public pages to a static-first framework (Astro or Next.js SSG).** Only propose this if prerendering proves brittle in this codebase. Do not begin a migration without sign-off.
+
+## Phase 2 — Crawler and agent infrastructure
+
+1. **robots.txt** — permissive: `User-agent: *` / `Allow: /`, plus a `Sitemap:` directive pointing at the sitemap URL. (AI agent fetchers are covered by the wildcard; we are intentionally open to them.)
+1. **sitemap.xml** — auto-generated at build time from the same route list as the prerenderer; includes every public route with `lastmod`.
+1. **llms.txt** at the site root — a concise markdown overview: what The Way OSS is, who it serves, and absolute links to key pages and every field note. Regenerated at build.
+1. **RSS feed** for field notes at `/feed.xml`, linked from every page via `<link rel="alternate" type="application/rss+xml">`.
+1. **JSON-LD structured data** — `Organization` schema sitewide; `Article` schema (headline, description, datePublished, author) on each field note. Must be present in the static HTML.
+1. **Per-route head tags** — unique `<title>`, meta description, canonical URL, and OG/Twitter tags baked into each prerendered page, not injected client-side only.
+
+## Phase 3 — Verification (all must pass against the deployed URL)
+
+1. `curl -s https://thewayoss.com/ | grep -i "practitioners"` returns hero copy from the **body** HTML, not only meta tags.
+1. For each field note URL: `curl -s <url>` contains the article’s opening paragraph text.
+1. `curl -s https://thewayoss.com/sitemap.xml` lists every public route.
+1. `curl -s https://thewayoss.com/robots.txt` and `/llms.txt` return 200 with correct content.
+1. `/feed.xml` parses as valid RSS.
+1. Browser check: the site looks and behaves identically; client-side navigation still works; no hydration warnings in the console.
+1. Final report: paste the curl output snippets proving items 1–4.
+
+## Out of scope
+
+Design changes, copy changes, new features, analytics, auth, performance work beyond what prerendering inherently provides.
