@@ -21,6 +21,67 @@ export interface JournalEntry {
   relatedVoiceSlug?: string;
 }
 
-const entries: JournalEntry[] = [];
+const entries: JournalEntry[] = [
+  {
+    slug: "rules-of-the-room",
+    date: "2026-06-12",
+    tag: "Values",
+    version: null,
+    title: "The Rules of the Room",
+    quote: "A value that doesn't constrain the roadmap is an opinion.",
+    quotePosition: 13,
+    body: `Principles guide behavior. Values decide what survives pressure. The Way OSS is built on the belief that technology should strengthen real-world practice communities, protect the relationships at their center, and help people become more useful to one another.
+
+Every room has two sets of rules. The ones on the wall, and the ones that actually run the place.
+
+The second set is invisible. It decides what gets repeated, what gets protected, what gets corrected, what gets rewarded, and what gets refused. You can't read it anywhere. You can only watch it operate — when someone new walks in, when status enters the room, when feedback lands hard, when what's convenient conflicts with what the community actually needs.
+
+Those invisible rules are the real values. Everything else is decoration.
+
+## Practiced, not claimed
+
+Culture is what gets repeated. A value becomes real the moment it changes behavior, and it stays real only as long as it costs something. "Human first" is a slogan until it kills a feature. "Practice" is a poster until the system rewards reps over reach.
+
+So this is not a brand page. It is a list of constraints we have agreed to be held to.
+
+## The mat is where we learned to check
+
+Brazilian Jiu-Jitsu has a property most environments lack: it makes claims testable.
+
+You can claim humility; the roll shows whether you can be corrected. You can claim discipline; attendance, notes, recovery, and follow-through reveal the truth. On the mat, an abstract value becomes observable behavior in minutes, and the feedback arrives whether you want it or not. The mat doesn't lie.
+
+The pattern is not unique to jiu-jitsu. It holds anywhere practice is real — in every domain we serve, wherever the reps are honest and reality gets a vote. The mat is simply where we learned to check.
+
+## Values as product constraints
+
+A value that doesn't constrain the roadmap is an opinion. Here is the stack, and what each one forbids.
+
+**Human first.** Technology serves the person, the coach, the room, and the relationship — in that order. The test: does this feature deepen what happens in the room, or quietly replace it? The constraint: we don't ship anything that trades mat time for screen time. Success is measured by what happens off the platform.
+
+**Practice is the path.** Transformation comes through repeated, embodied work — not consumption. The test: does the system reward reps, reflection, and contribution, or performance theater? The constraint: no vanity metrics as status. Consistency and learning outrank visibility.
+
+**Truth over image.** Reality beats narrative, and feedback is a gift. The test: does the product make reality easier to see, or easier to avoid? The constraint: nothing we build should help a member curate a self the room knows isn't real. Honest records over highlight reels.
+
+**Contribution over status.** The room gets stronger when people give what they know. The test: where does standing come from? The constraint: status accrues from making others better — teaching, sharing notes, answering the new person's question. If we ever rank anything, we rank generosity.
+
+**Cultivation over extraction.** Coaches and community leaders need leverage without losing the soul of the room. The test: who does the infrastructure ultimately serve? The constraint: community data belongs to the community. We will not mine attention, and we will not sell the room. Open source is this value made structural — the code belongs to the rooms it serves.
+
+**Connection is the cure.** The deepest work is restoring people to each other. The test: where does each flow end? The constraint: every feature should terminate in a human, not a feed.
+
+## Refusing drift
+
+Every platform drifts toward the same three failure modes: engagement loops, status games, and extraction. Not because anyone chooses them — because that is what the defaults optimize for. The drift is gravitational. Something stronger has to hold the line.
+
+That is the working function of values: they tell us what not to build. No infinite feeds. No outrage mechanics. No dark-pattern retention. No selling the room's attention to a third party. No growth that costs the room its soul. When the roadmap conflicts with what the community actually needs, the roadmap loses.
+
+We expect to be tested on this. Pressure is the only honest audit.
+
+## Worthy of the room
+
+The Way OSS is not trying to invent culture from scratch. The best rooms already run on these rules, and have for generations — long before software showed up. Coaches built them. Practitioners keep them. Our work is narrower and harder: build infrastructure worthy of what the mat has been teaching all along.
+
+OSS.`,
+  },
+];
 
 export default entries;

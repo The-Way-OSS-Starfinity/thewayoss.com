@@ -10,6 +10,47 @@ import { ShareLink } from "@/components/ShareLink";
 import { JournalCurrents } from "@/components/CrossCurrents";
 import FieldNotesEntryPage from "@/pages/field-notes-entry";
 
+function renderInlineBold(text: string): React.ReactNode {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  if (parts.length === 1) return text;
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+      )}
+    </>
+  );
+}
+
+function renderBlock(para: string, i: number, quotePosition: number, quote: string) {
+  const isHeading = para.startsWith("## ");
+
+  if (isHeading) {
+    return (
+      <div key={i}>
+        <h2 className="font-fraunces text-[22px] font-normal text-[#1A1816] mt-[56px] mb-0 leading-snug uppercase tracking-wide">
+          {para.slice(3)}
+        </h2>
+      </div>
+    );
+  }
+
+  return (
+    <div key={i}>
+      <p className="font-sans text-[19px] text-[#1A1816] leading-[1.7] mt-[32px] first:mt-0">
+        {renderInlineBold(para)}
+      </p>
+      {i === quotePosition - 1 && (
+        <blockquote className="my-[32px] pl-[24px] border-l-[3px] border-[#B8471C]">
+          <p className="font-fraunces italic text-[24px] text-[#B8471C] leading-[1.4]">
+            {quote}
+          </p>
+        </blockquote>
+      )}
+    </div>
+  );
+}
+
 export default function JournalEntryPage() {
   const { slug } = useParams<{ slug: string }>();
   const entry = getEntryBySlug(slug);
@@ -80,22 +121,7 @@ export default function JournalEntryPage() {
             transition={{ duration: DURATION, ease: EASE, delay: shouldReduce ? 0 : 0.12 }}
             className="mt-[80px]"
           >
-            {paragraphs.map((para, i) => (
-              <div key={i}>
-                <p
-                  className="font-sans text-[19px] text-[#1A1816] leading-[1.7] mt-[32px] first:mt-0"
-                >
-                  {para}
-                </p>
-                {i === entry.quotePosition - 1 && (
-                  <blockquote className="my-[32px] pl-[24px] border-l-[3px] border-[#B8471C]">
-                    <p className="font-fraunces italic text-[24px] text-[#B8471C] leading-[1.4]">
-                      {entry.quote}
-                    </p>
-                  </blockquote>
-                )}
-              </div>
-            ))}
+            {paragraphs.map((para, i) => renderBlock(para, i, entry.quotePosition, entry.quote))}
           </motion.div>
 
           {/* Share affordance */}
