@@ -14,7 +14,9 @@ Canonical path: `/Users/monk/Projects/thewayoss.com`
 2. Read that snapshot's `README.md` and `SHA256SUMS` before changing the site.
 3. Read `docs/production-source-reconciliation-2026-09-20.md` before changing
    source, history, build configuration, or deployment behavior.
-4. Run `pnpm verify:production` before and after production-source work.
+4. Read `docs/dependency-security-maintenance.md` before adding or restoring a
+   package dependency or package-manager workspace.
+5. Run `npm run verify:production` before and after production-source work.
 
 ## Canonical Production Source
 
@@ -39,7 +41,9 @@ site with that older homepage or assume the two implementations are equivalent.
   history. Do not merge, rebase, delete, push, or rewrite it automatically.
 - Do not use `/Users/monk/monk-workspace/projects/thewayoss-live-hero-patch` as
   current source or as a deployment target.
-- Use `pnpm`; do not introduce npm or Yarn lockfiles.
+- The static production path has no package dependencies. Use the documented
+  `npm run` verification commands without running an install or introducing a
+  package-manager lockfile.
 - Preserve dated snapshots. New releases get a new snapshot directory and hash
   manifest so every deployed byte remains attributable to Git history.
 
@@ -69,12 +73,14 @@ site with that older homepage or assume the two implementations are equivalent.
 Run:
 
 ```bash
-pnpm verify:production
-pnpm build:production
+npm run security:dependencies
+npm run verify:production
+npm run build:production
 ```
 
-The first command validates every file against the active snapshot manifest. The
-second repeats validation and produces `dist/production`. A local build never
-implies deployment. For public-facing changes, also complete responsive browser
+The dependency check enforces the dependency-free static boundary. The snapshot
+check validates every file against the active manifest. The build repeats that
+validation and produces `dist/production`. A local build never implies
+deployment. For public-facing changes, also complete responsive browser
 verification and compare the release candidate with the intended production
 state before requesting publication.
