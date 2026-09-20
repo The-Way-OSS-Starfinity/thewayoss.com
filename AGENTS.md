@@ -10,22 +10,38 @@ Canonical path: `/Users/monk/Projects/thewayoss.com`
 
 ## Start Here
 
-1. Read the root `package.json` for workspace commands.
-2. Read `artifacts/thewayoss-website/package.json` for the website package.
-3. Work primarily in `artifacts/thewayoss-website/src` for website UI and content.
-4. Read
-   `/Users/monk/monk-workspace/workspace/audits/2026-07-15-thewayoss-production-source-reconciliation.md`
-   before changing source, history, build configuration, or deployment behavior.
+1. Read `production-current.json` to identify the active production snapshot.
+2. Read that snapshot's `README.md` and `SHA256SUMS` before changing the site.
+3. Read `docs/production-source-reconciliation-2026-09-20.md` before changing
+   source, history, build configuration, or deployment behavior.
+4. Run `pnpm verify:production` before and after production-source work.
+
+## Canonical Production Source
+
+- `production-current.json` is the audited pointer to the current release.
+- `production-snapshots/<date>/static` is the exact deployable website bundle.
+- `production-snapshots/<date>/SHA256SUMS` is the integrity contract for that
+  bundle. Never edit a dated snapshot in place. Create a new dated snapshot and
+  update the pointer only after verification and human approval.
+- `scripts/build-production-snapshot.mjs` verifies the active snapshot before
+  copying it to `dist/production`.
+- `vercel.json` is the traceable Git-build contract for the production project.
+
+The older Vite/React implementation remains under
+`artifacts/thewayoss-website`. It is preserved history and a reference surface,
+not the current production source. Do not silently replace the approved static
+site with that older homepage or assume the two implementations are equivalent.
 
 ## Source And History Boundaries
 
-- Local `main` tracks the reconciled production-source branch. Inspect branch,
-  status, and HEAD before editing.
+- Inspect branch, status, HEAD, and the production pointer before editing.
 - The preserved `archive/local-main-2026-07-15` branch has unrelated older
   history. Do not merge, rebase, delete, push, or rewrite it automatically.
 - Do not use `/Users/monk/monk-workspace/projects/thewayoss-live-hero-patch` as
   current source or as a deployment target.
 - Use `pnpm`; do not introduce npm or Yarn lockfiles.
+- Preserve dated snapshots. New releases get a new snapshot directory and hash
+  manifest so every deployed byte remains attributable to Git history.
 
 ## Publishing Boundaries
 
@@ -39,16 +55,26 @@ Canonical path: `/Users/monk/Projects/thewayoss.com`
 
 ## Layout
 
-- `artifacts/thewayoss-website`: primary Vite/React website and prerender build
+- `production-snapshots`: immutable, dated production bundles and evidence
+- `production-current.json`: active production-source pointer
+- `scripts/build-production-snapshot.mjs`: integrity verification and build
+- `artifacts/thewayoss-website`: preserved older Vite/React implementation
 - `artifacts/api-server`: supporting API artifact
 - `artifacts/mockup-sandbox`: non-canonical design sandbox
 - `lib`: shared API, database, and client packages
-- `scripts`: workspace support scripts
 - `attached_assets`: source media and reference assets
 
 ## Verification
 
-Run `pnpm typecheck` for the workspace-level static check. `pnpm build` is a local
-build only and never implies deployment; the macOS native optional-dependency
-path has failed before, so report that failure rather than modifying lockfiles or
-dependencies outside a separately scoped repair.
+Run:
+
+```bash
+pnpm verify:production
+pnpm build:production
+```
+
+The first command validates every file against the active snapshot manifest. The
+second repeats validation and produces `dist/production`. A local build never
+implies deployment. For public-facing changes, also complete responsive browser
+verification and compare the release candidate with the intended production
+state before requesting publication.

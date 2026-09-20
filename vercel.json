@@ -1,9 +1,69 @@
 {
-  "buildCommand": "pnpm --filter @workspace/thewayoss-website run build",
-  "outputDirectory": "artifacts/thewayoss-website/dist/public",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build-production-snapshot.mjs",
+  "outputDirectory": "dist/production",
+  "installCommand": "echo 'Static production snapshot: dependency install skipped'",
   "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/spotlight", "destination": "/", "permanent": true },
+    {
+      "source": "/spotlight-southside",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(self)"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/field-notes/four-principles-culture",
+      "destination": "/field-notes/four-principles-culture/index.html"
+    },
+    { "source": "/journal", "destination": "/legacy/index.html" },
+    {
+      "source": "/journal/:path*",
+      "destination": "/legacy/index.html"
+    },
+    { "source": "/voices", "destination": "/legacy/index.html" },
+    {
+      "source": "/voices/:path*",
+      "destination": "/legacy/index.html"
+    },
+    { "source": "/pillars", "destination": "/legacy/index.html" },
+    {
+      "source": "/pillars/:path*",
+      "destination": "/legacy/index.html"
+    },
+    { "source": "/domains", "destination": "/legacy/index.html" },
+    {
+      "source": "/domains/:path*",
+      "destination": "/legacy/index.html"
+    },
+    { "source": "/begin", "destination": "/legacy/index.html" }
   ]
 }
